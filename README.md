@@ -13,11 +13,11 @@ Seleccionar y justificar el uso de estructuras LIFO (pila) y FIFO (cola) en una 
 
 | Integrante | Rol | Aporte principal |
 |---|---|---|
-| [Nombre 1] | Desarrollador de Pila LIFO | Explicación de LIFO, representación gráfica de la pila, algoritmos (apilar, desapilar, tope, estaVacia), implementación en Java y aplicación concreta de la Actividad 1. |
-| [Nombre 2] | Desarrollador de Cola FIFO | Explicación de FIFO, representación gráfica de la cola, algoritmos (encolar, desencolar, frente, estaVacia) y aplicación concreta de la Actividad 2. |
-| [Nombre 3] | Analista de Selección de Estructura | Elección de pila o cola en las 4 situaciones reales con su justificación técnica de la Actividad 3. Además, armado del informe final en PDF. |
-| [Nombre 4] | Analista de Comparación | Tabla comparativa entre pila y cola (principio, operaciones, acceso y ventajas) de la Actividad 4. |
-| [Nombre 5] | Analista de Conclusiones y Documentación | Conclusión grupal de la Actividad 4. Además, gestión del repositorio en GitHub y README. |
+| [ALESSANDRO ISMAEL GALLO QUIROZ] | Desarrollador de Pila LIFO | Explicación de LIFO, representación gráfica de la pila, algoritmos (apilar, desapilar, tope, estaVacia), implementación en Java y aplicación concreta de la Actividad 1. |
+| [JOSE FERNANDO FRIAS DÍAZ] | Desarrollador de Cola FIFO | Explicación de FIFO, representación gráfica de la cola, algoritmos (encolar, desencolar, frente, estaVacia) y aplicación concreta de la Actividad 2. |
+| [GIANFRANCO ARTURO BERNAL SARAVIA] | Analista de Selección de Estructura | Elección de pila o cola en las 4 situaciones reales con su justificación técnica de la Actividad 3. Además, armado del informe final en PDF. |
+| [YANHIRA LIZETH GUTIERREZ PÉREZ] | Analista de Comparación | Tabla comparativa entre pila y cola (principio, operaciones, acceso y ventajas) de la Actividad 4. |
+| [MARTHA SOFIA LOZANO PAREDES] | Analista de Conclusiones y Documentación | Conclusión grupal de la Actividad 4. Además, gestión del repositorio en GitHub y README. |
 
 ## BASE COMÚN DEL PROYECTO (Alineación Grupal)
 
