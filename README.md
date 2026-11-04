@@ -60,7 +60,7 @@ frente → [Solicitud de constancia] → [Solicitud de certificado] → [Duplica
 
 1. Clonar el repositorio: `git clone [LINK DEL REPOSITORIO]`
 2. Abrir la carpeta de la actividad en un IDE de Java (NetBeans, IntelliJ o Eclipse).
-3. Ejecutar la clase que contiene el método `main` (por ejemplo, `PilaAcciones` en `Actividad1_Pila`).
+3. Ejecutar la clase que contiene el método `main` (por ejemplo, `PilaAcciones` en `Actividad1` o `ColaSolicitudes` en `Actividad2`).
 4. La consola mostrará las acciones apiladas y desapiladas, o las solicitudes encoladas y desencoladas, según la actividad.
 
 Las actividades 3 y 4 son documentos de análisis y están incluidas en el informe PDF.
@@ -200,8 +200,172 @@ La pila es la más adecuada por tres razones:
 
 ## Actividad 2. Cola FIFO
 
+### a. Características de una estructura FIFO
+
+FIFO significa *First In, First Out* (primero en entrar, primero en salir). Es el principio de funcionamiento de la cola, una estructura de datos lineal en la que los elementos se atienden en el mismo orden en que llegan, como una fila de atención en ventanilla: la primera solicitud en registrarse es la primera en ser atendida.
+
+Sus características principales son:
+
+- **Acceso por dos extremos diferenciados:** la inserción se realiza únicamente por el **final** (*fin*) y la extracción o consulta se realiza únicamente por el **frente**. No se puede retirar ni insertar arbitrariamente un elemento en el medio de la fila.
+- **Orden de llegada preservado:** los elementos salen exactamente en el mismo orden en que ingresaron, garantizando equidad y evitando que una solicitud quede postergada indefinidamente.
+- **Operaciones básicas:** encolar (agregar un elemento al final de la cola), desencolar (retirar y atender el elemento del frente), frente (consultar el primer elemento sin retirarlo) y estaVacia (verificar si no hay elementos en espera).
+
+### Representación gráfica para el caso propuesto
+
+En el caso de la unidad de servicios académicos, la cola almacena las solicitudes de los alumnos para atenderlas por estricto orden de llegada. La figura muestra tres momentos:
+
+1. La cola vacía, con las referencias `frente` y `final` en nulo.
+2. La cola después de encolar "Solicitud de constancia", "Solicitud de certificado", "Duplicado de carné" y "Rectificación de nota". La primera solicitud registrada ("Solicitud de constancia") queda en el `frente`, mientras que la última en ingresar ("Rectificación de nota") se ubica en el `final`.
+3. La cola después de desencolar dos veces: primero se atiende y retira "Solicitud de constancia" y luego "Solicitud de certificado", quedando "Duplicado de carné" en el `frente` y "Rectificación de nota" en el `final`.
+
+```text
+Momento 1: Cola vacía
+frente → null
+final  → null
+
+Momento 2: Después de encolar las 4 solicitudes
+frente                                                                                          final
+  ↓                                                                                               ↓
+[Solicitud de constancia] → [Solicitud de certificado] → [Duplicado de carné] → [Rectificación de nota] → null
+
+Momento 3: Después de desencolar 2 solicitudes ("Solicitud de constancia" y "Solicitud de certificado")
+frente                      final
+  ↓                           ↓
+[Duplicado de carné] → [Rectificación de nota] → null
+```
+
+### b. Algoritmos de la cola
+
+La cola se implementa con nodos enlazados. Cada nodo guarda un `dato` (la solicitud) y un `siguiente` (el nodo que está detrás en la fila). La cola mantiene dos referencias: `frente` (primer nodo a atender) y `fin` (último nodo ingresado), que valen nulo cuando está vacía.
+
+**estaVacia()**
+
+```text
+Función estaVacia()
+    Si frente = nulo entonces
+        Retornar verdadero
+    Sino
+        Retornar falso
+    Fin Si
+Fin Función
+```
+
+**encolar(solicitud)**
+
+```text
+Procedimiento encolar(solicitud)
+    nuevo ← crear Nodo(solicitud)
+    Si estaVacia() entonces
+        frente ← nuevo
+        fin ← nuevo
+    Sino
+        fin.siguiente ← nuevo
+        fin ← nuevo
+    Fin Si
+Fin Procedimiento
+```
+
+**desencolar()**
+
+```text
+Función desencolar()
+    Si estaVacia() entonces
+        Mostrar "La cola está vacía"
+        Retornar nulo
+    Fin Si
+    solicitud ← frente.dato
+    frente ← frente.siguiente
+    Si frente = nulo entonces
+        fin ← nulo
+    Fin Si
+    Retornar solicitud
+Fin Función
+```
+
+**frente()**
+
+```text
+Función frente()
+    Si estaVacia() entonces
+        Mostrar "La cola está vacía"
+        Retornar nulo
+    Fin Si
+    Retornar frente.dato
+Fin Función
+```
+
+**Implementación en Java**
+
+La implementación completa está en la carpeta `Actividad2`. La clase `ColaLista` contiene las operaciones `enqueue` (encolar), `dequeue` (desencolar), `frente` y `estaVacia`. El método `main` encola las cuatro solicitudes del caso, desencola dos y muestra cómo se atienden en estricto orden de llegada.
+
+```java
+static class Nodo {
+    String dato;
+    Nodo siguiente;
+
+    Nodo(String dato) {
+        this.dato = dato;
+        this.siguiente = null;
+    }
+}
+
+static class ColaLista {
+    private Nodo frente;
+    private Nodo fin;
+
+    public ColaLista() {
+        frente = null;
+        fin = null;
+    }
+
+    public boolean estaVacia() { return frente == null; }
+
+    public void enqueue(String solicitud) {
+        Nodo nuevo = new Nodo(solicitud);
+        if (estaVacia()) {
+            frente = nuevo;
+            fin = nuevo;
+        } else {
+            fin.siguiente = nuevo;
+            fin = nuevo;
+        }
+        System.out.println("Solicitud encolada: " + solicitud);
+    }
+
+    public String dequeue() {
+        if (estaVacia()) {
+            System.out.println("La cola está vacía");
+            return null;
+        }
+        String solicitud = frente.dato;
+        frente = frente.siguiente;
+        if (frente == null) {
+            fin = null;
+        }
+        System.out.println("Solicitud atendida: " + solicitud);
+        return solicitud;
+    }
+
+    public String frente() {
+        if (estaVacia()) {
+            System.out.println("La cola está vacía");
+            return null;
+        }
+        return frente.dato;
+    }
+}
+```
+
+### c. Aplicación concreta del caso
+
+En la unidad de servicios académicos, la cola es la estructura más adecuada para la **atención de solicitudes de trámites estudiantiles** (solicitud de constancia, solicitud de certificado, duplicado de carné y rectificación de nota). Cada vez que un alumno registra un trámite, la solicitud se encola al final; al atender, se desencola la solicitud del frente, que es la más antigua en espera.
+
+La cola es la más adecuada por tres razones:
+
+- **El orden de atención coincide con el principio FIFO:** el primer trámite registrado debe ser el primero en atenderse, garantizando equidad y evitando que solicitudes antiguas queden relegadas.
+- **Acceso directo a ambos extremos de operación:** el `frente` indica siempre cuál es la siguiente solicitud por atender y el `final` (`fin`) indica dónde insertar la nueva solicitud entrante.
+- **Las operaciones son rápidas:** tanto encolar como desencolar solo actualizan referencias (`frente` o `fin`) en tiempo constante, sin recorrer toda la fila de espera.
+
 ## Actividad 3. Selección de estructura para situaciones reales
 
 ## Actividad 4. Comparación y argumentación
-
-
