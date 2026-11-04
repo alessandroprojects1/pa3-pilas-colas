@@ -368,4 +368,17 @@ La cola es la más adecuada por tres razones:
 
 ## Actividad 3. Selección de estructura para situaciones reales
 
+En una unidad de servicios académicos es necesario utilizar estructuras de datos que permitan gestionar correctamente las acciones registradas y las solicitudes recibidas. Para ello, se analiza cada situación y se determina si corresponde utilizar una pila (LIFO) o una cola (FIFO).
+
+| Situación | Estructura | Justificación |
+|-----------|------------|------------------------|
+| **Registro de acciones recientes para revertir cambios** | Pila (LIFO) | La pila permite deshacer las acciones en orden inverso a su registro. La última acción realizada es la primera que se revierte. Por ejemplo, si primero se registra una matrícula y después se modifican los datos del alumno, la modificación debe deshacerse antes que el registro de matrícula. Esto se consigue mediante las operaciones apilar y desapilar. |
+| **Atención de solicitudes en orden de llegada** | Cola (FIFO) | La cola permite atender primero la solicitud que ingresó antes que las demás. Por ejemplo, si una solicitud de constancia llega antes que una solicitud de certificado, la primera debe atenderse antes. Las operaciones encolar y desencolar permiten mantener este orden de atención. |
+| **Procesamiento donde el último ingresado debe atenderse primero** | Pila (LIFO) | El principio LIFO establece que el último elemento ingresado es el primero en salir. Esto permite procesar primero la acción más reciente mediante la operación desapilar, sin alterar el orden de los elementos anteriores. |
+| **Flujo de espera de trámites pendientes** | Cola (FIFO) | La cola organiza los trámites pendientes según su orden de llegada. Los trámites nuevos se incorporan al final y los más antiguos se retiran desde el frente para ser atendidos. Esto permite mantener un flujo ordenado y evitar que las solicitudes recientes se adelanten a las anteriores. |
+
+
+
+
+
 ## Actividad 4. Comparación y argumentación
