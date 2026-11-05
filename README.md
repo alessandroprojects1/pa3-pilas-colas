@@ -382,6 +382,7 @@ En una unidad de servicios académicos es necesario utilizar estructuras de dato
 
 
 ## Actividad 4. Comparación y argumentación
+
 ## Estructura de datos: Pila (Stack)
  
 ### 1. Principio de funcionamiento
@@ -411,5 +412,42 @@ Los elementos se agregan y eliminan desde la parte superior de la pila.
 - Deshacer acciones (`Ctrl + Z`).
 - Historial de navegación.
 - Ejecución de funciones en programación.
+
+Estructura de datos Cola 
+
+1. Principio de funcionamiento
+
+La cola utiliza el principio FIFO (primero en entrar, primero en salir). Es decir, el primer elemento agregado es el primero en retirarse.
+
+2. Operaciones principales
+
+- Enqueue:agrega un elemento al final.
+
+- Dequeue:elimina el primer elemento.
+
+- Front:muestra el primer elemento sin eliminarlo.
+
+3. Forma de uso
+
+Los elementos ingresan por el final de la cola y se retiran desde el inicio, respetando el orden de llegada.
+
+4. Ventajas y desventajas
+
+- Ventajas: mantiene el orden de llegada y permite organizar tareas.
+- Desventajas: no permite acceder directamente a cualquier elemento.
+
+5. Ejemplos de aplicación
+
+- Turnos de atención en bancos.
+- Cola de impresión de documentos.
+- Procesamiento de tareas en una computadora.
+
+
+Conclusión grupal
+
+La pila y la cola son estructuras útiles para organizar datos, pero tienen diferentes formas de funcionamiento. La pila utiliza LIFO, mientras que la cola utiliza FIFO. Por eso, elegir la estructura correcta permite resolver los problemas de manera más ordenada y eficiente.
+
+
+
  
 
