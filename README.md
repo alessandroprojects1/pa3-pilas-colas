@@ -382,3 +382,34 @@ En una unidad de servicios académicos es necesario utilizar estructuras de dato
 
 
 ## Actividad 4. Comparación y argumentación
+## Estructura de datos: Pila (Stack)
+ 
+### 1. Principio de funcionamiento
+ 
+La pila utiliza el principio **LIFO** (*Last In, First Out*: último en entrar, primero en salir). Es decir, el último elemento agregado es el primero en retirarse.
+ 
+### 2. Operaciones principales
+ 
+| Operación | Descripción |
+|-----------|-------------|
+| `push`    | Agrega un elemento. |
+| `pop`     | Elimina el último elemento. |
+| `peek`    | Muestra el elemento superior. |
+ 
+### 3. Forma de uso
+ 
+Los elementos se agregan y eliminan desde la parte superior de la pila.
+ 
+### 4. Ventajas y desventajas
+ 
+**Ventajas**
+- Es sencilla, rápida y fácil de implementar.
+**Desventajas**
+- Solo permite acceder directamente al elemento superior.
+### 5. Ejemplos de aplicación
+ 
+- Deshacer acciones (`Ctrl + Z`).
+- Historial de navegación.
+- Ejecución de funciones en programación.
+ 
+
